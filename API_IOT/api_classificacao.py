@@ -5,26 +5,28 @@ from nltk.corpus import stopwords
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-# Baixa stopwords do nltk na primeira execução (só precisa rodar 1x)
-# nltk.download('stopwords')
+# Adiciona o caminho local para o NLTK encontrar as stopwords no deploy (Render)
+nltk.data.path.append("./nltk_data")
 
-# Carrega os recursos
-stop_words_pt = stopwords.words('portuguese')
-vectorizer = joblib.load('tfidf_vectorizer.pkl')
-model = joblib.load('modelo_classificador_risco.pkl')
+# Carrega as stopwords em português
+stop_words_pt = stopwords.words("portuguese")
 
-# Função para limpar texto igual ao treinamento
+# Carrega vetorizador e modelo
+vectorizer = joblib.load("tfidf_vectorizer.pkl")
+model = joblib.load("modelo_classificador_risco.pkl")
+
+# Função de limpeza
 def clean_text(text):
     text = text.lower()
     text = re.sub(r'[^a-zà-ú\s]', '', text)
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
-# Define o modelo de requisição (validação automática)
+# Modelo de entrada
 class ClassificacaoRequest(BaseModel):
     conteudo: str
 
-# Instancia o app FastAPI
+# Inicializa API
 app = FastAPI(
     title="API de Classificação de Risco de Desastres",
     description="Recebe texto e retorna o nível de perigo previsto pelo modelo treinado.",
@@ -33,9 +35,7 @@ app = FastAPI(
 
 @app.post("/classificar")
 def classificar_risco(req: ClassificacaoRequest):
-    # Pré-processamento do texto
     texto_limpo = clean_text(req.conteudo)
     texto_tfidf = vectorizer.transform([texto_limpo])
-    # Predição
     nivel = model.predict(texto_tfidf)[0]
     return {"nivel_perigo": nivel}

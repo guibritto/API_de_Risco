@@ -1,0 +1,35 @@
+📑 Relatório Técnico
+1. Descrição do Problema
+Desastres naturais como enchentes, deslizamentos e tempestades são cada vez mais frequentes e causam sérios impactos nas cidades e na vida das pessoas. A comunicação rápida e a classificação correta do nível de risco são essenciais para que a defesa civil e os cidadãos possam tomar decisões eficazes. Porém, não existe uma maneira padronizada e automática de analisar relatos desses eventos e identificar o grau de perigo envolvido.
+
+2. Metodologia Utilizada
+O projeto consistiu em criar um aplicativo no formato de rede social, onde usuários podem postar relatos de desastres naturais, informando o tipo do desastre e o local do ocorrido. O principal diferencial é a integração de um modelo de machine learning responsável por classificar automaticamente o nível de perigo de cada relato.
+
+As etapas seguidas foram:
+
+Construção de Dataset:
+Foi criado um dataset realista, com 200 relatos simulando diferentes tipos e níveis de desastres naturais, cuidadosamente balanceado para evitar padrões óbvios e garantir coerência entre o texto, o tipo do desastre e o nível de risco.
+
+Pré-processamento dos Dados:
+Todos os textos passaram por limpeza, remoção de stopwords e normalização, além de serem vetorizados usando TF-IDF.
+
+Modelagem:
+Diversos algoritmos foram testados, sendo o Random Forest o escolhido por apresentar a melhor combinação de desempenho e robustez, atingindo cerca de 80% de precisão.
+
+Validação:
+O modelo foi avaliado com métricas como acurácia, f1-score e matriz de confusão, mostrando boa performance principalmente para distinguir casos críticos e altos, mesmo em situações ambíguas.
+
+Exportação e Integração:
+O modelo e o vetorizador foram exportados e estão prontos para serem consumidos por uma API Python (FastAPI), que será integrada ao app mobile e ao backend Java.
+
+3. Resultados Obtidos
+O modelo alcançou uma acurácia de aproximadamente 80%, conseguindo identificar com boa precisão o nível de perigo a partir de relatos textuais variados. As maiores dificuldades ficaram por conta da distinção entre níveis médios e altos, devido à similaridade de linguagem em alguns relatos – algo esperado em aplicações do mundo real.
+
+A integração do modelo via API permitirá que cada relato seja analisado em tempo real, tornando a informação acessível de maneira rápida e visual tanto para usuários comuns quanto para gestores de crise.
+
+4. Conclusão
+O projeto demonstrou que é viável classificar automaticamente o risco de desastres naturais a partir de relatos de usuários, combinando técnicas modernas de NLP e machine learning. Com uma solução robusta, integrada e de fácil expansão, espera-se que essa ferramenta contribua para melhorar a resposta a emergências e a comunicação em situações de desastre.
+
+Os próximos passos incluem expandir o dataset com relatos reais, testar novos algoritmos e integrar novas fontes de informação, tornando a solução ainda mais inteligente e confiável.
+
+URL do Video: https://youtu.be/tSqfftkdww0

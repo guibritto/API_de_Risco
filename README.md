@@ -8,7 +8,42 @@ Desenvolvido como parte de um sistema mobile para auxiliar a população e a def
 - Recebe texto descritivo de um desastre natural (ex: "Enchente atingiu ruas do centro da cidade").
 - Retorna o nível de perigo classificado automaticamente pelo modelo treinado: **baixo, médio, alto ou crítico**.
 
-## 📦 Como usar
+## 📎 Link do video de apresentação do projeto
+
+URL: https://youtu.be/tSqfftkdww0
+
+## 📦 Como usar com React Native
+
+### 1. Instalação das dependências no Visual Studio Code
+
+Execute no terminal:
+
+```bash
+cd app_mobile
+
+npm install
+
+npx expo start
+```
+
+### 2. Rota do projeto para acessar a estrutura da API
+
+|app_mobile
+|──app
+|────tabs
+|──────index.tsx
+
+### 3. Como rodar localmente
+
+Intale o Aplicativo no seu celular "Expo Go". Abra o terminal e desca ele até achar o QR code que está sendo exibido lá. Após isso, caso esteja em android, abra o aplicativo
+e clique em "Scan QR Code" e escaneie o QR code que está sendo exibido no terminal. Caso esteja em IOS, abra a camera do seu celular e escaneie o QR code que está sendo exibido no terminal.
+
+## 4. Como Usar no APP
+
+Escreva o texto de um desastre natural e clique em "Classificar".
+Após alguns segundo (caso seja a priemira vez que você está usando o aplicativo) o nível de risco será classificado automaticamente. Esse atraso é devido a hibernaçao da API em nuvem.
+
+## 📦 Como usar com localmente
 
 ### 1. Instalação das dependências
 
@@ -18,14 +53,17 @@ Execute no terminal:
 ```bash
 pip install -r requirements.txt
 ```
+
 ### 2. Estrutura do projeto
+
 .
-├── api_classificacao.py                  # Arquivo principal da API FastAPI
-├── modelo_classificador_risco.pkl        # Modelo Random Forest treinado
-├── tfidf_vectorizer.pkl                  # Vetorizador TF-IDF treinado
+├── api_classificacao.py # Arquivo principal da API FastAPI
+├── modelo_classificador_risco.pkl # Modelo Random Forest treinado
+├── tfidf_vectorizer.pkl # Vetorizador TF-IDF treinado
 ├── requirements.txt
 
 ### 3. Como rodar localmente
+
 Com as dependências instaladas e os arquivos .pkl no diretório, rode:
 
 ```bash
@@ -36,14 +74,16 @@ Acesse a documentação interativa em:
 http://localhost:8000/docs
 
 ## 📲 Como usar a API
+
 ### Endpoint:
+
 POST /classificar
 JSON de entrada:
 
 json
 
 {
-  "conteudo": "Incêndio de grandes proporções avançando rapidamente sobre áreas habitadas."
+"conteudo": "Incêndio de grandes proporções avançando rapidamente sobre áreas habitadas."
 }
 
 ### Resposta esperada:
@@ -51,10 +91,11 @@ json
 json
 
 {
-  "nivel_perigo": "alto"
+"nivel_perigo": "alto"
 }
 
 ## 💡 Sobre o projeto
+
 O modelo foi treinado com um dataset balanceado e realista, contendo relatos variados de situações envolvendo desastres naturais como enchentes, deslizamentos, tempestades e incêndios.
 Utilizando técnicas de Processamento de Linguagem Natural (NLP) e Machine Learning, foi possível alcançar uma acurácia de aproximadamente 80% usando o classificador Random Forest.
 

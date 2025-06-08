@@ -100,3 +100,9 @@ O modelo foi treinado com um dataset balanceado e realista, contendo relatos var
 Utilizando técnicas de Processamento de Linguagem Natural (NLP) e Machine Learning, foi possível alcançar uma acurácia de aproximadamente 80% usando o classificador Random Forest.
 
 Esta API será integrada a um aplicativo mobile (em React Native), permitindo que usuários relatem ocorrências e o sistema classifique automaticamente o nível de perigo. O backend da aplicação também contará com uma API em Java, funcionando em conjunto com essa solução Python.
+
+### Integrantes:
+#### Guilherme Britto - RM558475
+#### Thiago Mendes - RM555352
+#### Vinicius Banciela - RM558117
+
